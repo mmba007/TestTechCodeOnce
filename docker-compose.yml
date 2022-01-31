@@ -30,6 +30,7 @@ services:
             - 80:80
         links: 
             - backend
+        hostname: front
 networks:
     spring-cloud-network:
         driver: bridge
