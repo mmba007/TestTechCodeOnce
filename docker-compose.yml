@@ -1,6 +1,8 @@
 version: '2'
 services:
     backend:
+        depends_on:
+            - mongodb
         container_name: testtech
         build:
             context: ./testTech
@@ -16,9 +18,7 @@ services:
             - 27017:27017
         volumes:
             - ~/apps/mongo:/data/db
-
-        networks:
-            - spring-cloud-network
+        hostname: mongo
     # frontend:
     #     container_name: product-server
     #     build:
