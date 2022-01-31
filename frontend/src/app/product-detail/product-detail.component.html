@@ -3,19 +3,21 @@
     <mat-card-header>
       <mat-card-title>{{ product.name }}</mat-card-title>
       <mat-card-subtitle><strong>Price: {{ product.price }} $</strong></mat-card-subtitle>
+      <mat-card-subtitle>Quantity: {{ product.quantity }} </mat-card-subtitle>
+
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
         <mat-tab *ngIf="product.imageURL" label="Image">
           <div class="tab-container">
-            <img class="u-marginAutoHorizontal" src="{{ product.imageURL }}">
+            <img class="u-marginAutoHorizontal" src="{{ product.imageURL }}" style="max-width: 350px;">
             <!-- <p>{{ product.fields.image[0].fields.description }}</p> -->
           </div>
         </mat-tab>
         <mat-tab label="Description">
           <div class="tab-container">
+            <p><strong>ID: {{ product.productId || 'ID not available' }}</strong></p>
             <p>{{ product.description }}</p>
-            <p>SKU: {{ product.productId || 'SKU not available' }}</p>
           </div>
         </mat-tab>
         <!-- <mat-tab *ngIf="product.brand" label="Brand">

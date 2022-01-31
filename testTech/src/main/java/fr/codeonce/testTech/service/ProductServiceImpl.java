@@ -3,22 +3,18 @@ package fr.codeonce.testTech.service;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-import fr.codeonce.testTech.exception.BadRequestException;
-import fr.codeonce.testTech.exception.RecordNotFoundException;
-import fr.codeonce.testTech.mapper.ProductLightMapperImpl;
-import fr.codeonce.testTech.mapper.ProductMapperImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.codeonce.testTech.DTO.ProductDTO;
 import fr.codeonce.testTech.DTO.ProductLightDTO;
+import fr.codeonce.testTech.exception.BadRequestException;
+import fr.codeonce.testTech.exception.RecordNotFoundException;
 import fr.codeonce.testTech.mapper.ProductLightMapper;
 import fr.codeonce.testTech.mapper.ProductMapper;
 import fr.codeonce.testTech.model.Category;
@@ -26,9 +22,6 @@ import fr.codeonce.testTech.model.CategoryLight;
 import fr.codeonce.testTech.model.Product;
 import fr.codeonce.testTech.repository.CategoryRepo;
 import fr.codeonce.testTech.repository.ProductRepo;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.sql.DataSource;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -57,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
 				pc.getProducts().add(productMapper.toLight(savedProduct));
 				categoryRepo.save(pc);
 				return pc;
-			}).orElseThrow(()-> new BadRequestException("You should provide a category !") );
+			}).orElseThrow(() -> new BadRequestException("You should provide a category !"));
 			log.info("Product with id " + savedProduct.getProductId() + " created successfully");
 			return savedProduct.getProductId();
 		}
@@ -73,9 +66,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductLightDTO> searchProductsByCategoryName(String categoryName) {
+	public List<ProductLightDTO> searchProductsByCategoryName(String categoryName, int skip, int limit) {
 		List<ProductLightDTO> result = new ArrayList<ProductLightDTO>();
-		Category categ = categoryRepo.findByName(0, 2, categoryName).get();
+		Category categ = categoryRepo.findByName(skip, limit, categoryName).get();
 		log.info("Searching for products under category " + categ.getName() + " ...");
 		if (categ != null) {
 			result = categ.getProducts().stream().map(pl -> productLightMapper.toDTO(pl)).collect(Collectors.toList());
@@ -84,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductLightDTO> searchAvailableProductsByCategoryName(int skip,int limit,String categoryName) {
+	public List<ProductLightDTO> searchAvailableProductsByCategoryName(int skip, int limit, String categoryName) {
 		List<ProductLightDTO> result = new ArrayList<ProductLightDTO>();
 		Category categ = categoryRepo.findByName(skip, limit, categoryName).get();
 		log.info("Searching for products under category " + categ.getName() + " ...");
@@ -105,6 +98,12 @@ public class ProductServiceImpl implements ProductService {
 	public void deleteAll() {
 		log.info("Deleting all products ...");
 		productRepo.deleteAll();
+	}
+
+	@Override
+	public void deleteOneProduct(String id) {
+		log.info("Deleting product with id " + id + " ...");
+		productRepo.deleteById(id);
 	}
 
 }

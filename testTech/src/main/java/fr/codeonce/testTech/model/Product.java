@@ -1,5 +1,7 @@
 package fr.codeonce.testTech.model;
 
+import java.util.Objects;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -7,8 +9,6 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Objects;
 
 @Document("product")
 public class Product {
@@ -117,7 +117,6 @@ public class Product {
 		this.quantity = quantity;
 		this.imageURL = imageURL;
 	}
-	
 
 	public Product() {
 		super();

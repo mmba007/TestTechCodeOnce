@@ -58,5 +58,4 @@ public class CategoryDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

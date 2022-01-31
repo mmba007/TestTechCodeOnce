@@ -62,5 +62,4 @@ public class ProductLight {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

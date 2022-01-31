@@ -25,14 +25,14 @@ public class CategoryServiceImpl implements CategoryService {
 	CategoryMapper categoryMapper;
 
 	private static final Logger log = LoggerFactory.getLogger(ProductServiceImpl.class);
- 
+
 	@Override
 	@Transactional
 	public String createCategory(CategoryDTO categoryDTO) throws SQLException {
 		log.info("Creating category ...");
 		Category savedCateg = categoryRepo.save(categoryMapper.toBO(categoryDTO));
 		if (savedCateg != null) {
-			log.info("Category with id "+savedCateg.getCategoryId()+" created successfully");
+			log.info("Category with id " + savedCateg.getCategoryId() + " created successfully");
 			return savedCateg.getCategoryId();
 		}
 		log.error("Error while creating category !!");
@@ -49,6 +49,12 @@ public class CategoryServiceImpl implements CategoryService {
 	public void deleteAll() {
 		log.info("Deleting all categories ...");
 		categoryRepo.deleteAll();
+	}
+
+	@Override
+	public void deleteOneCateogory(String id) {
+		log.info("Deleting category with id " + id + " ...");
+		categoryRepo.deleteById(id);
 	}
 
 }

@@ -46,4 +46,8 @@ return this.httpClient.get<any[]>(`${API_URL}/products`);
       return this.httpClient.get<any[]>(`${API_URL}/products/category/${categName}`);
     }
 
+    searchInStockProductsByCategory(categName:string):Observable<any>{
+      return this.httpClient.get<any[]>(`${API_URL}/products-in-stock/category/${categName}`); 
+    }
+
 }

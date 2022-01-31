@@ -38,5 +38,4 @@ public class CategoryLight {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 }

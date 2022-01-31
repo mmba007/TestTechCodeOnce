@@ -42,7 +42,7 @@ export class ProductListComponent implements OnInit {
 
   searchByCategory(){
     if(this.myControl && this.myControl.value){
-      this.productService.searchProductsByCategory(this.myControl.value)
+      this.productService.searchInStockProductsByCategory(this.myControl.value)
       .subscribe(data=>{
         console.log(data);
         this.products=data;

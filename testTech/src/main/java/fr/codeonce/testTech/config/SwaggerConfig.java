@@ -18,6 +18,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
+	// To test API go to address:port/swagger-ui.html
+
 	@Bean
 	public Docket postsApi() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("public-api").apiInfo(apiInfo()).select()

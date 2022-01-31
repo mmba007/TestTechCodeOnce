@@ -18,8 +18,10 @@
       <mat-card-header>
         <mat-card-title>{{ product.name }}</mat-card-title>
         <mat-card-subtitle><strong>Price: {{ product.price }} $</strong></mat-card-subtitle>
+        <mat-card-subtitle>Quantity: {{ product.quantity }} </mat-card-subtitle>
+
       </mat-card-header>
-      <img mat-card-image src="{{ product.imageURL }}">
+      <img mat-card-image src="{{ product.imageURL }}" style="max-width: 250px;">
       <mat-card-actions class="u-marginTopAuto">
         <a mat-button [routerLink]="['/products', product.productId]">View details</a>
       </mat-card-actions>

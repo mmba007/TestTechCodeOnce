@@ -27,16 +27,12 @@ public class Category {
 	public Category(String name) {
 		this.name = name;
 	}
-	
-	
 
 	public Category(String categoryId, @Min(3) String name) {
 		super();
 		this.categoryId = categoryId;
 		this.name = name;
 	}
-
-
 
 	public String getCategoryId() {
 		return categoryId;
@@ -70,8 +66,6 @@ public class Category {
 		this.products = products;
 	}
 
-
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,14 +75,10 @@ public class Category {
 		return result;
 	}
 
-
-
 	public Category() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
