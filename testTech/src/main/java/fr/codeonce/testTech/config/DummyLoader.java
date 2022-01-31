@@ -37,6 +37,9 @@ public class DummyLoader implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		LOG.info("Charging database ...");
 
+		productRepo.deleteAll();
+		categoryRepo.deleteAll();
+
 		Category electronics = new Category("Electronics");
 		Category toys = new Category("Toys");
 		Category kitchen = new Category("Kitchen");
