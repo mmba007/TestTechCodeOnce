@@ -5,10 +5,6 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.URL;
-import org.springframework.data.annotation.Id;
-
-import fr.codeonce.testTech.model.Category;
-import fr.codeonce.testTech.model.CategoryLight;
 
 public class ProductDTO {
 
@@ -102,11 +98,24 @@ public class ProductDTO {
 		this.imageURL = imageURL;
 	}
 
+	public ProductDTO(String productId, @Size(min = 3, max = 15) String name,
+			@Size(max = 40, message = "Description must not exceed 40 characters") String description,
+			@NotNull Double price, String categId,
+			@NotNull(message = "You must specify product's category") String categoryName,
+			@Positive(message = "Quantity must be a positive number") Integer quantity, @URL String imageURL) {
+		super();
+		this.productId = productId;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.category = new CategoryLightDTO(categId, categoryName);
+		this.quantity = quantity;
+		this.imageURL = imageURL;
+	}
+
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 
 }

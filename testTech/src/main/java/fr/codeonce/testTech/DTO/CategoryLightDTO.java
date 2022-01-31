@@ -31,5 +31,10 @@ public class CategoryLightDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	
+	public CategoryLightDTO(String categoryId, String name) {
+		super();
+		this.categoryId = categoryId;
+		this.name = name;
+	}
+
 }
