@@ -1,0 +1,25 @@
+version: '2'
+services:
+    backend:
+        container_name: testtech
+        build:
+            context: ./testTech
+            dockerfile: Dockerfile
+        image: testtech:latest
+        ports:
+            - 8025:8025
+        networks:
+            - spring-cloud-network
+    # frontend:
+    #     container_name: product-server
+    #     build:
+    #         context: docker-product-server
+    #         dockerfile: Dockerfile
+    #     image: product-server:latest
+    #     ports:
+    #         - 19999:9999
+    #     networks:
+    #         - spring-cloud-network
+networks:
+    spring-cloud-network:
+        driver: bridge

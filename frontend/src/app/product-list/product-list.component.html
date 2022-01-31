@@ -1,0 +1,30 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Choose a category of products" (keydown)="handlekeypressEvent($event.target.value)" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+    
+      <mat-option *ngFor="let categ of filteredCategs | async" [value]="categ">
+        {{categ}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button class="btn btn-primary" style="margin-left: 50px;" (click)="searchByCategory()">Search By Category</button>
+</form>
+<br><br>
+
+<ul class="u-listReset product-grid">
+  <li class="u-marginBottom" *ngFor="let product of products">
+    <mat-card class="product-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle><strong>Price: {{ product.price }} $</strong></mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ product.imageURL }}">
+      <mat-card-actions class="u-marginTopAuto">
+        <a mat-button [routerLink]="['/products', product.productId]">View details</a>
+      </mat-card-actions>
+    </mat-card>
+  </li>
+</ul>
+<!-- <mat-paginator [pageSizeOptions]="[3, 5, 10]"></mat-paginator> -->
+
