@@ -1,11 +1,11 @@
 {
-  "name": "cf-angular-tutorial",
+  "name": "test-tech-code-once",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href /product-catalogue-web.ts/",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

@@ -1,6 +1,6 @@
 import { CfAngularTutorialPage } from './app.po';
 
-describe('cf-angular-tutorial App', () => {
+describe('test-tech-code-once App', () => {
   let page: CfAngularTutorialPage;
 
   beforeEach(() => {
