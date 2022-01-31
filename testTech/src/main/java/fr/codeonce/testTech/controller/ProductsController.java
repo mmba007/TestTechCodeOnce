@@ -25,7 +25,7 @@ import fr.codeonce.testTech.service.ProductService;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin("localhost:80")
 public class ProductsController {
 
 	@Autowired
