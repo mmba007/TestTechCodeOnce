@@ -8,18 +8,14 @@ services:
         image: testtech:latest
         ports:
             - 8025:8025
-        networks:
-            - spring-cloud-network
+        links:
+            - mongodb
     mongodb:
         image: mongo:5.0
         ports:
             - 27017:27017
         volumes:
             - ~/apps/mongo:/data/db
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=test
-            - MONGO_INITDB_ROOT_PASSWORD=test123
-            - MONGO_INITDB_DATABASE=testDB
 
         networks:
             - spring-cloud-network
